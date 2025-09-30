@@ -209,6 +209,11 @@ function G.UIDEF.challenge_list_page(_page)
             if G.CONTROLLER.focused.target and G.CONTROLLER.focused.target.config.id == 'challenge_page' then snapped = true end
                 local challenge_completed =  G.PROFILES[G.SETTINGS.profile].challenge_progress.completed[v.item.id or '']
                 local challenge_unlocked = G.PROFILES[G.SETTINGS.profile].challenges_unlocked and (G.PROFILES[G.SETTINGS.profile].challenges_unlocked >= v.num)
+                if v.item.unlocked and type(v.item.unlocked) == 'function' then
+                    challenge_unlocked = v.item:unlocked()
+                elseif type(v.item.unlocked) == 'boolean' then
+                    challenge_unlocked = v.item.unlocked
+                end
                 local challenge_color = G.C.RED
                 if v.item.rules and v.item.rules.custom then
                     for i, j in ipairs(v.item.rules.custom) do
