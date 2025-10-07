@@ -210,7 +210,6 @@ return {
             ch_c_world_machine = {"The {C:dark_edition}World Machine{} is active. {C:inactive,S=0.5}(Enables a random Rule every Round)"},
             ch_c_anaglyph = {'Creates a {C:attention}#1#{} when Boss Blind is defeated'},
 
-            ch_c_hidden = {"This challenge is {C:attention}Hidden"}, --Can be used to hide a challenge. It will not count in the totals on the Challenge page.
             ch_c_dummy_rule = {"Dummy rule"}
         }
     }
