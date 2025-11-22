@@ -26,55 +26,10 @@ function Back:apply_to_run()
 
     --ALL EDITIONS
 
-    G.GAME.modifiers.no_edition_cards = false --no edition cards
-    G.GAME.modifiers.no_edition_jokers = false --no edition jokers
-
-    --BASE GAME EDITIONS
-
-    G.GAME.modifiers.no_foil_cards = false --no foil cards 
-    G.GAME.modifiers.no_foil_jokers = false --no foil jokers
-
-    G.GAME.modifiers.no_holo_cards = false --no holo cards 
-    G.GAME.modifiers.no_holo_jokers = false --no holo jokers
-
-    G.GAME.modifiers.no_negative_jokers = false --no negative jokers
-
-    G.GAME.modifiers.no_polychrome_cards = false --no polychrome cards 
-    G.GAME.modifiers.no_polychrome_jokers = false --no polychrome jokers
-
-    --BUNCO EDITIONS
-
-    G.GAME.modifiers.no_fluorescent_cards = false --no fluorescent cards 
-    G.GAME.modifiers.no_fluorescent_jokers = false --no fluorescent jokers
-
-    G.GAME.modifiers.no_glitter_cards = false --no glitter cards 
-    G.GAME.modifiers.no_glitter_jokers = false --no glitter jokers
-
-    --CRYPTID EDITIONS
-
-    G.GAME.modifiers.no_mosaic_cards = false
-    G.GAME.modifiers.no_mosaic_jokers = false
-
-    G.GAME.modifiers.no_glitched_cards = false
-    G.GAME.modifiers.no_glitched_jokers = false
-
-    G.GAME.modifiers.no_oversat_cards = false
-    G.GAME.modifiers.no_oversat_jokers = false
-
-    G.GAME.modifiers.no_gold_cards = false
-    G.GAME.modifiers.no_gold_jokers = false
-
-    G.GAME.modifiers.no_glass_cards = false
-    G.GAME.modifiers.no_glass_jokers = false
-
-    G.GAME.modifiers.no_blur_cards = false
-    G.GAME.modifiers.no_blur_jokers = false
-
-    G.GAME.modifiers.no_astral_cards = false
-    G.GAME.modifiers.no_astral_jokers = false
-
-    G.GAME.modifiers.no_m_cards = false
-    G.GAME.modifiers.no_m_jokers = false
+    G.GAME.modifiers.no_editions = {
+        ['cards'] = {},
+        ['jokers'] = {}
+    }
 
     --BLINDS
 
@@ -107,18 +62,11 @@ function Back:apply_to_run()
 
     --STICKERS
 
-    G.GAME.modifiers.all_rental_jokers = false
     G.GAME.modifiers.rentals_keep_price = false
     G.GAME.modifiers.rental_rate_increase = 0
     G.GAME.modifiers.rental_rate_increase_all = 0
 
-    G.GAME.modifiers.all_perishable_jokers = false
-
-    G.GAME.modifiers.all_singular_jokers = false
-
-    G.GAME.modifiers.all_shrouded_jokers = false
-
-    G.GAME.modifiers.all_pinned_jokers = false
+    G.GAME.modifiers.chdp_force_stickers = {}
 
     G.GAME.modifiers.cannot_sell_stickered = false
 
@@ -378,31 +326,8 @@ end
 local set_edition_ref = Card.set_edition
 function Card:set_edition(edition, immediate, silent)
     if self.ability.set == "Joker" then
-        if G.GAME.modifiers.all_rental_jokers == true then
-            self:set_rental(true)
-        end
-        if G.GAME.modifiers.all_perishable_jokers == true then
-            self:set_perishable(true)
-        end
-        if G.GAME.modifiers.all_singular_jokers == true then
-            self.ability.chdp_singular = true
-        end
-        if G.GAME.modifiers.all_shrouded_jokers == true then
-            self.ability.chdp_shrouded = true
-        end
-        if G.GAME.modifiers.all_pinned_jokers == true then
-            self.pinned = true
-        end
-        if (SMODS.Mods.Bunco or {}).can_load then
-            if G.GAME.modifiers.all_hindered_jokers == true then
-                self.ability.bunc_hindered = true
-            end
-            if G.GAME.modifiers.all_scattering_jokers == true then
-                self.ability.bunc_scattering = true
-            end
-            if G.GAME.modifiers.all_reactive_jokers == true then
-                self.ability.bunc_reactive = true
-            end
+        for k, v in pairs(G.GAME.modifiers.chdp_force_stickers) do
+            self:add_sticker(k, true)
         end
     end
     local run = true
@@ -415,104 +340,18 @@ function Card:set_edition(edition, immediate, silent)
         run = false
     end
 
-    if (edition == "e_foil" or edition.foil) and G.GAME.modifiers.no_foil_jokers and self.ability.set == "Joker" then
+    local _edition = edition
+    if type(edition) == "table" then
+        for k, v in pairs(edition) do
+            _edition = 'e_'..k
+        end
+    end
+
+    if G.GAME.modifiers.no_editions.jokers[_edition] and self.ability.set == 'Joker'
+    or G.GAME.modifiers.no_editions.cards[_edition] and not(self.ability.set == 'Joker') then
         run = false
     end
-    if (edition == "e_foil" or edition.foil) and G.GAME.modifiers.no_foil_cards and not(self.ability.set == "Joker") then
-        run = false
-    end
 
-    if (edition == "e_holo" or edition.holo) and G.GAME.modifiers.no_holo_jokers and self.ability.set == "Joker" then
-        run = false
-    end
-    if (edition == "e_holo" or edition.holo) and G.GAME.modifiers.no_holo_cards and not(self.ability.set == "Joker") then
-        run = false
-    end
-
-    if (edition == "e_polychrome" or edition.polychrome) and G.GAME.modifiers.no_polychrome_jokers and self.ability.set == "Joker" then
-        run = false
-    end
-    if (edition == "e_polychrome" or edition.polychrome) and G.GAME.modifiers.no_polychrome_cards and not(self.ability.set == "Joker") then
-        run = false
-    end
-    
-    if (edition == "e_negative" or edition.negative) and G.GAME.modifiers.no_negative_jokers and self.ability.set == "Joker" then
-        run = false
-    end
-    if (SMODS.Mods.Bunco or {}).can_load then
-        if (edition == "e_bunc_fluorescent" or edition.bunc_fluorescent) and G.GAME.modifiers.no_fluorescent_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_bunc_fluorescent" or edition.bunc_fluorescent) and G.GAME.modifiers.no_fluorescent_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_bunc_glitter" or edition.bunc_glitter) and G.GAME.modifiers.no_glitter_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_bunc_glitter" or edition.bunc_glitter) and G.GAME.modifiers.no_glitter_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-    end
-    if (SMODS.Mods.Cryptid or {}).can_load then
-        if (edition == "e_cry_mosaic" or edition.cry_mosaic) and G.GAME.modifiers.no_mosaic_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_mosaic" or edition.cry_mosaic) and G.GAME.modifiers.no_mosaic_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_cry_glitched" or edition.cry_glitched) and G.GAME.modifiers.no_glitched_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_glitched" or edition.cry_glitched) and G.GAME.modifiers.no_glitched_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_cry_oversat" or edition.cry_oversat) and G.GAME.modifiers.no_oversat_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_oversat" or edition.cry_oversat) and G.GAME.modifiers.no_oversat_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_cry_gold" or edition.cry_gold) and G.GAME.modifiers.no_gold_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_gold" or edition.cry_gold) and G.GAME.modifiers.no_gold_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_cry_glass" or edition.cry_glass) and G.GAME.modifiers.no_glass_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_glass" or edition.cry_glass) and G.GAME.modifiers.no_glass_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_cry_blur" or edition.cry_blur) and G.GAME.modifiers.no_blur_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_blur" or edition.cry_blur) and G.GAME.modifiers.no_blur_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-
-        if (edition == "e_cry_astral" or edition.cry_astral) and G.GAME.modifiers.no_astral_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_astral" or edition.cry_astral) and G.GAME.modifiers.no_astral_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-        if (edition == "e_cry_m" or edition.cry_m) and G.GAME.modifiers.no_m_jokers and self.ability.set == "Joker" then
-            run = false
-        end
-        if (edition == "e_cry_m" or edition.cry_m) and G.GAME.modifiers.no_m_cards and not(self.ability.set == "Joker") then
-            run = false
-        end
-    end
-    if silent == true then
-        run = true
-    end
     if run then
         return set_edition_ref(self, edition, immediate, silent)
     else
@@ -1042,49 +881,25 @@ local chaos_value_rules = {
                         end
 end
 
---HAVE A STICKER
-
-SMODS.Sticker{
-    key = 'singular',
-    loc_txt = {
-        name = 'Singular',
-        label = 'Singular',
-        text = {
-            'Joker cannot',
-            'be duplicated'
-        }
+SMODS.Challenge{
+        loc_txt = "Test",
+        key = 'test',
+        rules = {
+            custom = {
+                {id = 'chdp_force_sticker', value = 'rental'},
+                {id = 'chdp_enable_sticker', value = 'opal_stacked'},
+                {id = 'chdp_eban', value = 'e_hpot_phantasmic'}
+            },
+            modifiers = {
+            },
+        },
+        jokers = {
+        },
+        restrictions = {
+            banned_cards = {},
+            banned_tags = {},
+            banned_other = {}
     },
-    sets = {
-        Joker = true
-    },
-    rate = 0.7,
-    needs_enable_flag = true,
-    badge_colour = HEX('583876'),
-    atlas = 'chdpstickers',
-    pos = {x = 0, y = 0}
-}
-
-SMODS.Sticker{
-    key = 'shrouded',
-    loc_txt = {
-        name = 'Shrouded',
-        label = 'Shrouded',
-        text = {
-            'Card flips when obtained,',
-            'cannot be unflipped'
-        }
-    },
-    sets = {
-        Joker = true
-    },
-    rate = 0.5,
-    needs_enable_flag = true,
-    badge_colour = HEX('54575c'),
-    atlas = 'chdpstickers',
-    pos = {x = 1, y = 0},
-    apply = function(self, card, layer)
-        card:flip()
-    end
 }
 
 --[[SMODS.Challenge{
@@ -1124,35 +939,4 @@ SMODS.Challenge{
             banned_tags = {},
             banned_other = {}
         },
-        }
-        
-SMODS.Challenge{
-    loc_txt = "Balatro: Sticker Star",
-    key = "chdp_sticker_1",
-    rules = {
-        custom = {
-            {id = 'enable_rental_jokers'},
-            {id = 'enable_eternal_jokers'},
-            {id = 'enable_perishable_jokers'},
-            {id = 'enable_singular_jokers'},
-            {id = 'enable_scattering_jokers'},
-            {id = 'enable_reactive_jokers'},
-            {id = 'enable_hindered_jokers'}
-        }
-    }
-}
-
-SMODS.Challenge{
-    loc_txt = "Balatro: Sticker Star II",
-    key = "chdp_sticker_2",
-    rules = {
-        custom = {
-            {id = 'all_eternal'},
-            {id = 'all_rental_jokers'},
-            {id = 'all_singular_jokers'},
-            {id = 'all_scattering_jokers'},
-            {id = 'all_reactive_jokers'},
-            {id = 'all_hindered_jokers'}
-        }
-    }
-}]]
+        }]]

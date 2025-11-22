@@ -31,65 +31,17 @@ return {
             ch_c_no_edition_cards = {"{C:attention}Playing cards{} can no longer have {C:attention}Editions"},
             ch_c_no_edition_jokers = {"{C:attention}Jokers{} can no longer have {C:attention}Editions"},
         
-            ch_c_no_foils = {"{C:dark_edition}Foil{} cards will no longer appear"},
-            ch_c_no_foil_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Foil"},
-            ch_c_no_foil_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Foil"},
-        
-            ch_c_no_holos = {"{C:dark_edition}Holographic{} cards will no longer appear"},
-            ch_c_no_holo_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Holographic"},
-            ch_c_no_holo_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Holographic"},
-        
-            ch_c_no_negative_cards = {"{C:attention}Negative{} cards will no longer appear"},
-            ch_c_no_negative_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Negative"},
-        
-            ch_c_no_polychromes = {"{C:attention}Polychrome{} cards will no longer appear"},
-            ch_c_no_polychrome_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Polychrome"},
-            ch_c_no_polychrome_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Polychrome"},
-        
-            ch_c_no_fluorescents = {"{C:dark_edition}Fluorescent{} cards will no longer appear {C:inactive}(Bunco)"},
-            ch_c_no_fluorescent_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Fluorescent {C:inactive}(Bunco)"},
-            ch_c_no_fluorescent_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Fluorescent {C:inactive}(Bunco)"},
-        
-            ch_c_no_glitters = {"{C:dark_edition}Glitter{} cards will no longer appear {C:inactive}(Bunco)"},
-            ch_c_no_glitter_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Glitter {C:inactive}(Bunco)"},
-            ch_c_no_glitter_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Glitter {C:inactive}(Bunco)"},
-
-            ch_c_no_mosaics = {"{C:dark_edition}Mosaic{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_mosaic_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Mosaic {C:inactive}(Cryptid)"},
-            ch_c_no_mosaic_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Mosaic {C:inactive}(Cryptid)"},
-
-            ch_c_no_oversats = {"{C:dark_edition}Oversaturated{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_oversat_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Oversaturated {C:inactive}(Cryptid)"},
-            ch_c_no_oversat_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Oversaturated {C:inactive}(Cryptid)"},
-
-            ch_c_no_golds = {"{C:dark_edition}Golden{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_gold_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Golden {C:inactive}(Cryptid)"},
-            ch_c_no_gold_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Golden {C:inactive}(Cryptid)"},
-
-            ch_c_no_glitcheds = {"{C:dark_edition}Glitched{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_glitched_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Glitched {C:inactive}(Cryptid)"},
-            ch_c_no_glitched_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Glitched {C:inactive}(Cryptid)"},
-            
-            ch_c_no_glasss = {"{C:dark_edition}Fragile{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_glass_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Fragile {C:inactive}(Cryptid)"},
-            ch_c_no_glass_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Fragile {C:inactive}(Cryptid)"},
-
-            ch_c_no_blurs = {"{C:dark_edition}Blurred{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_blur_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Blurred {C:inactive}(Cryptid)"},
-            ch_c_no_blur_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Blurred {C:inactive}(Cryptid)"},
-
-            ch_c_no_astrals = {"{C:dark_edition}Astral{} cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_astral_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}Astral {C:inactive}(Cryptid)"},
-            ch_c_no_astral_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}Astral {C:inactive}(Cryptid)"},
-
-            ch_c_no_ms = {"{C:dark_edition}M{}Edition cards will no longer appear {C:inactive}(Cryptid)"},
-            ch_c_no_m_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}M{} Edition {C:inactive}(Cryptid)"},
-            ch_c_no_m_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}M{} Edition {C:inactive}(Cryptid)"},
+            ch_c_chdp_eban = {"{C:dark_edition}#1#{} cards will no longer appear"},
+            ch_c_chdp_eban_cards = {"{C:attention}Playing cards{} can no longer be {C:dark_edition}#1#"},
+            ch_c_chdp_eban_jokers = {"{C:attention}Jokers{} can no longer be {C:dark_edition}#1#"},
 
             -- BLIND REQUIREMENTS AND REWARDS
 
             ch_c_blind_scaling = {"All {C:attention}Blind requirements{} are multiplied by {C:red}X#1#"},
             ch_c_money_scaling = {"All {C:attention}Blind rewards{} are multiplied by {C:red}X#1#"},
+            
+            ch_c_money_total_scaling = {"{C:money}Money{} at Cash Out multiplied by {C:red}X#1#{}"},
+            ch_c_mts_scaling = {"{C:red}#1#x{} added to Cash Out multiplier every Ante"},
 
             -- JOKER THINGS
 
@@ -108,26 +60,10 @@ return {
             
             -- STICKERS
 
-            ch_c_enable_eternal_jokers = {"{C:attention}Jokers{} can be {C:attention}Eternal"},
-            ch_c_enable_rental_jokers = {"{C:attention}Jokers{} can be {C:attention}Rental"},
-            ch_c_enable_perishable_jokers = {"{C:attention}Jokers{} can be {C:attention}Perishable"},
-            ch_c_enable_singular_jokers = {"{C:attention}Jokers{} can be {C:attention}Singular {C:inactive}(Challenger Deep)"},
-            ch_c_enable_shrouded_jokers = {"{C:attention}Jokers{} can be {C:attention}Shrouded {C:inactive}(Challenger Deep)"},
-            ch_c_enable_scattering_jokers = {"{C:attention}Jokers{} can be {C:attention}Scattering {C:inactive}(Bunco)"},
-            ch_c_enable_reactive_jokers = {"{C:attention}Jokers{} can be {C:attention}Reactive {C:inactive}(Bunco)"},
-            ch_c_enable_hindered_jokers = {"{C:attention}Jokers{} can be {C:attention}Hindered {C:inactive}(Bunco)"},
-            ch_c_enable_stacked_cards = {"{C:attention}Playing Cards{} can be {C:attention}Stacked {C:inactive}(Opalstuff)"},
-            ch_c_enable_bl_stickers_cards = {"Every {C:attention}Blind Sticker{} for {C:attention}Cards{} is enabled{C:inactive} (Opalstuff)"},
-            ch_c_enable_all_stickers = {"Every {C:attention}Joker Sticker{} is enabled"},
+            ch_c_chdp_enable_sticker = {"{C:attention}Jokers{} can be {C:attention}#1#"},
+            ch_c_enable_all_stickers = {"Every {C:attention}Sticker{} is enabled"},
         
-            ch_c_all_rental_jokers = {"All {C:attention}Jokers{} are {C:attention}Rental {C:inactive}(If compatible)"},
-            ch_c_all_perishable_jokers = {"All {C:attention}Jokers{} are {C:attention}Perishable {C:inactive}(If compatible)"},
-            ch_c_all_singular_jokers = {"All {C:attention}Jokers{} are {C:attention}Singular {C:inactive}(If compatible, Challenger Deep)"},
-            ch_c_all_shrouded_jokers = {"All {C:attention}Jokers{} are {C:attention}Shrouded {C:inactive}(If compatible, Challenger Deep)"},
-            ch_c_all_reactive_jokers = {"All {C:attention}Jokers{} are {C:attention}Reactive {C:inactive}(If compatible, Bunco)"},
-            ch_c_all_scattering_jokers = {"All {C:attention}Jokers{} are {C:attention}Scattering {C:inactive}(If compatible, Bunco)"},
-            ch_c_all_hindered_jokers = {"All {C:attention}Jokers{} are {C:attention}Hindered {C:inactive}(If compatible, Bunco)"},
-            ch_c_all_pinned_jokers = {"All {C:attention}Jokers{} are {C:attention}Pinned"},
+            ch_c_chdp_force_sticker = {"All {C:attention}Jokers{} are {C:attention}#1#"},
 
             ch_c_rental_rate = {"{C:attention}Rental Jokers{} cost {C:money}$#1#{} per round"},
             ch_c_rental_rate_increase = {"{C:attention}Rental Joker{} prices increase by {C:money}$#1#{} per ante"},
@@ -176,10 +112,6 @@ return {
             ch_c_forced_joker_pool = {"{C:attention}Shop Jokers{} will be pulled from a {C:attention}pre-determined pool"},
             ch_c_forced_joker_all = {"Every {C:attention}Shop Joker{} will be #1#"},
             ch_c_disable_rerolls = {"{C:green}Rerolls{} are {C:red}disabled"},
-            
-            -- COMPAT - WUMPUS AND CLYDE
-
-            ch_c_discord_suits = {'{C:attention}Discord{} suits enabled {C:inactive}(Wumpus and Clyde)'}, --Unused (unreleased mod)
 
             -- COMPAT - YGGDRASIL
 
@@ -201,8 +133,6 @@ return {
             ch_c_blackjack = {"{C:attention}Played Cards {}must add up to #1# {C:inactive, S=0.5}(Face Cards are 10, Aces 1 or 11)"},
             ch_c_win_ante = {"Win the run at {C:attention}Ante{} #1#"},
             ch_c_extra_hand_money_scaling = {"Extra {C:blue}Hand{} money is multiplied by {C:red}X#1#"},
-            ch_c_money_total_scaling = {"{C:money}Money{} at Cash Out multiplied by {C:red}X#1#{}"},
-            ch_c_mts_scaling = {"{C:red}#1#x{} added to Cash Out multiplier every Ante"},
 
             ch_c_chaos_engine = {"{C:red}Chaos {C:inactive,S=0.5}(Enables a random Rule every Ante)"},
             ch_c_chaos_engine_all = {"{C:red}Chaos {C:inactive,S=0.5}(Enables a random Rule every Round)"},

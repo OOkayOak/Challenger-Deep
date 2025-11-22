@@ -23,126 +23,14 @@ target = "game.lua"
 pattern = "for k, v in ipairs(_ch.rules.custom) do"
 position = "after"
 match_indent = true
-payload = """if v.id == 'no_editions' then
-                        G.GAME.modifiers.no_edition_cards = true
-                        G.GAME.modifiers.no_edition_jokers = true
-                    elseif v.id == 'no_edition_cards' then
-                        G.GAME.modifiers.no_edition_cards = true
-                    elseif v.id == 'no_edition_jokers' then
-                        G.GAME.modifiers.no_edition_jokers = true
-
-                        -- EDITIONS - BASE GAME (note: it is recommended to ban corresponding tags for editions)
-
-                    elseif v.id == 'no_foils' then --removes foil edition from all cards
-                        G.GAME.modifiers.no_foil_cards = true
-                        G.GAME.modifiers.no_foil_jokers = true
-                    elseif v.id == 'no_foil_cards' then --removes foil edition from playing cards
-                        G.GAME.modifiers.no_foil_cards = true
-                    elseif v.id == 'no_foil_jokers' then --removes foil edition from jokers
-                        G.GAME.modifiers.no_foil_jokers = true
-
-                    elseif v.id == 'no_holos' then --removes holo edition from all cards
-                        G.GAME.modifiers.no_holo_cards = true
-                        G.GAME.modifiers.no_holo_jokers = true
-                    elseif v.id == 'no_holo_cards' then --removes holo edition from playing cards
-                        G.GAME.modifiers.no_holo_cards = true
-                    elseif v.id == 'no_holo_jokers' then --removes holo edition from jokers
-                        G.GAME.modifiers.no_holo_jokers = true
-
-                    elseif v.id == 'no_polychromes' then --removes polychrome edition from all cards
-                        G.GAME.modifiers.no_polychrome_cards = true
-                        G.GAME.modifiers.no_polychrome_jokers = true
-                    elseif v.id == 'no_polychrome_cards' then --removes polychrome edition from playing cards
-                        G.GAME.modifiers.no_polychrome_cards = true
-                    elseif v.id == 'no_polychrome_jokers' then --removes polychrome edition from jokers
-                        G.GAME.modifiers.no_polychrome_jokers = true
-
-                    elseif v.id == 'no_negative_jokers' then --removes negative edition from jokers
-                        G.GAME.modifiers.no_negative_jokers = true
-
-                        -- EDITIONS - BUNCO
-
-                    elseif v.id == 'no_fluorescents' then --removes fluorescent edition from all cards
-                        G.GAME.modifiers.no_fluorescent_cards = true
-                        G.GAME.modifiers.no_fluorescent_jokers = true
-                    elseif v.id == 'no_fluorescent_cards' then --removes fluorescent edition from playing cards
-                        G.GAME.modifiers.no_fluorescent_cards = true
-                    elseif v.id == 'no_fluorescent_jokers' then --removes fluorescent edition from jokers
-                        G.GAME.modifiers.no_fluorescent_jokers = true
-                    
-                    elseif v.id == 'no_glitters' then --removes glitter edition from all cards
-                        G.GAME.modifiers.no_glitter_cards = true
-                        G.GAME.modifiers.no_glitter_jokers = true
-                    elseif v.id == 'no_glitter_cards' then --removes glitter edition from playing cards
-                        G.GAME.modifiers.no_glitter_cards = true
-                    elseif v.id == 'no_glitter_jokers' then --removes glitter edition from jokers
-                        G.GAME.modifiers.no_glitter_jokers = true
-                    
-                        -- EDITIONS - CRYPTID
-
-                    elseif v.id == 'no_mosaics' then --removes mosaic edition from all cards
-                        G.GAME.modifiers.no_mosaic_cards = true
-                        G.GAME.modifiers.no_mosaic_jokers = true
-                    elseif v.id == 'no_mosaic_cards' then --removes mosaic edition from playing cards
-                        G.GAME.modifiers.no_mosaic_cards = true
-
-                    elseif v.id == 'no_mosaic_jokers' then --removes mosaic edition from jokers
-                        G.GAME.modifiers.no_mosaic_jokers = true
-                    elseif v.id == 'no_glitcheds' then --removes glitched edition from all cards
-                        G.GAME.modifiers.no_glitched_cards = true
-                        G.GAME.modifiers.no_glitched_jokers = true
-                    elseif v.id == 'no_glitched_cards' then --removes glitched edition from playing cards
-                        G.GAME.modifiers.no_glitched_cards = true
-                    elseif v.id == 'no_glitched_jokers' then --removes glitched edition from jokers
-                        G.GAME.modifiers.no_glitched_jokers = true
-
-                    elseif v.id == 'no_oversats' then --removes oversat edition from all cards
-                        G.GAME.modifiers.no_oversat_cards = true
-                        G.GAME.modifiers.no_oversat_jokers = true
-                    elseif v.id == 'no_oversat_cards' then --removes oversat edition from playing cards
-                        G.GAME.modifiers.no_oversat_cards = true
-                    elseif v.id == 'no_oversat_jokers' then --removes oversat edition from jokers
-                        G.GAME.modifiers.no_oversat_jokers = true
-
-                    elseif v.id == 'no_golds' then --removes gold edition from all cards
-                        G.GAME.modifiers.no_gold_cards = true
-                        G.GAME.modifiers.no_gold_jokers = true
-                    elseif v.id == 'no_gold_cards' then --removes gold edition from playing cards
-                        G.GAME.modifiers.no_gold_cards = true
-                    elseif v.id == 'no_gold_jokers' then --removes gold edition from jokers
-                        G.GAME.modifiers.no_gold_jokers = true
-
-                    elseif v.id == 'no_glasss' then --removes glass edition from all cards (i know it looks goofy)
-                        G.GAME.modifiers.no_glass_cards = true
-                        G.GAME.modifiers.no_glass_jokers = true
-                    elseif v.id == 'no_glass_cards' then --removes glass edition from playing cards
-                        G.GAME.modifiers.no_glass_cards = true
-                    elseif v.id == 'no_glass_jokers' then --removes glass edition from jokers
-                        G.GAME.modifiers.no_glass_jokers = true
-
-                    elseif v.id == 'no_blurs' then --removes blur edition from all cards
-                        G.GAME.modifiers.no_blur_cards = true
-                        G.GAME.modifiers.no_blur_jokers = true
-                    elseif v.id == 'no_blur_cards' then --removes blur edition from playing cards
-                        G.GAME.modifiers.no_blur_cards = true
-                    elseif v.id == 'no_blur_jokers' then --removes blur edition from jokers
-                        G.GAME.modifiers.no_blur_jokers = true
-                    
-                    elseif v.id == 'no_astrals' then --removes astral edition from all cards
-                        G.GAME.modifiers.no_astral_cards = true
-                        G.GAME.modifiers.no_astral_jokers = true
-                    elseif v.id == 'no_astral_cards' then --removes astral edition from playing cards
-                        G.GAME.modifiers.no_astral_cards = true
-                    elseif v.id == 'no_astral_jokers' then --removes astral edition from jokers
-                        G.GAME.modifiers.no_astral_jokers = true
-                    
-                    elseif v.id == 'no_ms' then --removes m edition from all cards
-                        G.GAME.modifiers.no_m_cards = true
-                        G.GAME.modifiers.no_m_jokers = true
-                    elseif v.id == 'no_m_cards' then --removes m edition from playing cards
-                        G.GAME.modifiers.no_m_cards = true
-                    elseif v.id == 'no_m_jokers' then --removes m edition from jokers
-                        G.GAME.modifiers.no_m_jokers = true
+payload = """
+    if v.id == 'chdp_eban_joker' then -- ban edition for joker
+        G.GAME.modifiers.no_editions.jokers[v.value] = true
+    elseif v.id == 'chdp_eban_card' then -- ban edition for cards
+        G.GAME.modifiers.no_editions.cards[v.value] = true
+    elseif v.id == 'chdp_eban' then -- ban edition for cards AND jokers
+        G.GAME.modifiers.no_editions.cards[v.value] = true
+        G.GAME.modifiers.no_editions.jokers[v.value] = true
 
                         -- BLINDS
 
@@ -241,27 +129,12 @@ payload = """if v.id == 'no_editions' then
                         
                     -- STICKERS
 
-                    elseif v.id == 'enable_eternal_jokers' then --these 3 just do the same thing from stakes
-                        G.GAME.modifiers.enable_eternals_in_shop = true
-                    elseif v.id == 'enable_perishable_jokers' then
-                        G.GAME.modifiers.enable_perishables_in_shop = true
-                    elseif v.id == 'enable_rental_jokers' then
-                        G.GAME.modifiers.enable_rentals_in_shop = true
-
-                    elseif v.id == 'enable_singular_jokers' then --challenger deep stickers
-                        G.GAME.modifiers['enable_chdp_singular'] = true
-                    elseif v.id == 'enable_shrouded_jokers' then
-                        G.GAME.modifiers['enable_chdp_shrouded'] = true
-
-                    elseif v.id == 'enable_scattering_jokers' then --bunco time
-                        G.GAME.modifiers['enable_bunc_scattering'] = true
-                    elseif v.id == 'enable_reactive_jokers' then
-                        G.GAME.modifiers['enable_bunc_reactive'] = true
-                    elseif v.id == 'enable_hindered_jokers' then
-                        G.GAME.modifiers['enable_bunc_hindered'] = true
-
-                    elseif v.id == 'enable_stacked_cards' then -- Opalstuff time?
-                        G.GAME.modifiers['enable_opal_stacked'] = true
+                    elseif v.id == 'chdp_enable_sticker' then
+                        if v.value == 'eternal' or v.value == 'rental' or v.value == 'perishable' then
+                            G.GAME.modifiers['enable_'..v.value..'s_in_shop'] = true
+                        else
+                            G.GAME.modifiers['enable_'..v.value] = true
+                        end
 
                     elseif v.id == 'enable_all_stickers' then -- enable every sticker
                         for k, v in pairs(SMODS.Stickers) do
@@ -270,9 +143,6 @@ payload = """if v.id == 'no_editions' then
                                 G.GAME.modifiers['enable_'..k] = true
                             end
                         end
-
-                    elseif v.id == 'all_rental_jokers' then --every joker is rental
-                        G.GAME.modifiers.all_rental_jokers = true
                     
                     elseif v.id == 'rentals_keep_price' then --rental jokers keep their purchase price
                         G.GAME.modifiers.rentals_keep_price = true
@@ -291,21 +161,8 @@ payload = """if v.id == 'no_editions' then
                     elseif v.id == 'perishable_rounds' then --sets perishable rounds
                         G.GAME.perishable_rounds = v.value
                     
-                    elseif v.id == 'all_singular_jokers' then -- every joker is singular
-                        G.GAME.modifiers.all_singular_jokers = true
-
-                    elseif v.id == 'all_shrouded_jokers' then -- every joker is shrouded etc.
-                        G.GAME.modifiers.all_shrouded_jokers = true
-                    
-                    elseif v.id == 'all_pinned_jokers' then
-                        G.GAME.modifiers.all_pinned_jokers = true
-
-                    elseif v.id == 'all_reactive_jokers' then
-                        G.GAME.modifiers.all_reactive_jokers = true
-                    elseif v.id == 'all_hindered_jokers' then
-                        G.GAME.modifiers.all_hindered_jokers = true
-                    elseif v.id == 'all_scattering_jokers' then
-                        G.GAME.modifiers.all_scattering_jokers = true
+                    elseif v.id == 'chdp_force_sticker' then -- every joker is forced to be this sticker
+                        G.GAME.modifiers.chdp_force_stickers[v.value] = true
 
                     elseif v.id == 'cannot_sell_stickered' then
                         G.GAME.modifiers.cannot_sell_stickered = true
